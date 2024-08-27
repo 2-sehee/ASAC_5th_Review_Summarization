@@ -8,7 +8,7 @@ import os
 ## DB 연결
 db_path = os.path.abspath('DB/ASAC_MAP_HALF.db')
 
-def get_connection(db_path):
+def get_connection(db_path = os.path.abspath('DB/ASAC_MAP_HALF.db')):
     return sqlite3.connect(db_path)
 
 
@@ -36,7 +36,7 @@ Business = namedtuple(
     'service_keyword'
 ])
 ## 모든 business table 불러오기
-def fetch_business_list(db_path):
+def fetch_business_list(db_path = os.path.abspath('DB/ASAC_MAP_HALF.db')):
     conn = get_connection(db_path)
     query = """
     SELECT * FROM business
