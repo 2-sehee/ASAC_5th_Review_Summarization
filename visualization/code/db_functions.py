@@ -3,10 +3,10 @@
 import sqlite3
 from collections import namedtuple
 import pandas as pd
+import os
 
 ## DB 연결
-import os
-db_path = os.path.join(os.path.dirname(__file__), 'DB/ASAC_MAP_HALF.db')
+db_path = os.path.abspath('DB/ASAC_MAP_HALF.db')
 
 def get_connection(db_path):
     return sqlite3.connect(db_path)
