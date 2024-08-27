@@ -6,7 +6,8 @@ import pandas as pd
 import os
 
 ## DB 연결
-path = os.path.abspath('DB/ASAC_MAP_HALF.db')
+path = f'C:\Users\NT551XCJ\Documents\ASAC_MAP\visualization\code\DB\ASAC_MAP_HALF.db'
+#os.path.abspath('DB/ASAC_MAP_HALF.db')
 
 def get_connection(db_path = path):
     return sqlite3.connect(db_path)
