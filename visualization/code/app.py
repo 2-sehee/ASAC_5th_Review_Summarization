@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 
 ## DB 관련 함수 import 
-from db_functions import fetch_business_list, find_business_in_db, get_reviews_for_business, get_users_for_review, print_review_table_schema
+from db_functions import fetch_business_list, find_business_in_db, get_reviews_for_business, get_users_for_review
 
 
 ## 페이지 설정 함수

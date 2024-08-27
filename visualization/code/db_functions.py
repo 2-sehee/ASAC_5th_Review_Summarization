@@ -6,7 +6,7 @@ import pandas as pd
 import os
 
 ## DB 연결
-path = f'C:\Users\NT551XCJ\Documents\ASAC_MAP\visualization\code\DB\ASAC_MAP_HALF.db'
+path = 'C:\\Users\\NT551XCJ\\Documents\\ASAC_MAP\\visualization\\code\\DB\\ASAC_MAP_HALF.db'
 #os.path.abspath('DB/ASAC_MAP_HALF.db')
 
 def get_connection(db_path = path):
@@ -151,15 +151,15 @@ def get_users_for_review(user_ids):
 
 
 
-## 리뷰 스키마 확인 코드
-def print_review_table_schema():
-    conn = get_connection()
-    try:
-        c = conn.cursor()
-        c.execute("PRAGMA table_info(review)")
-        schema = c.fetchall()
-        print("Review table schema:")
-        for col in schema:
-            print(col)
-    finally:
-        conn.close()
+# ## 리뷰 스키마 확인 코드
+# def print_review_table_schema():
+#     conn = get_connection()
+#     try:
+#         c = conn.cursor()
+#         c.execute("PRAGMA table_info(review)")
+#         schema = c.fetchall()
+#         print("Review table schema:")
+#         for col in schema:
+#             print(col)
+#     finally:
+#         conn.close()
