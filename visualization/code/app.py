@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import streamlit.components.v1 as components
 import matplotlib.pyplot as plt
+import os
 
 
 ## DB 관련 함수 import 
@@ -125,7 +126,8 @@ def display_bar_chart(business_info):
 def display_store_info(business_info):
     col1, col2 = st.columns([1.2, 1.8])
     with col1:
-        st.image("assets/sample_img2.jpg", caption='Store Image', width=350)
+        image_path = os.path.join(os.path.dirname(__file__), 'assets/sample_img2.jpg')
+        st.image(image_path, caption='Store Image', width=350)
     with col2:
         #display_map(business_info)
             # @@ 예외처리) 가게 리뷰가 10개 이상인 경우에만 차트 생성
