@@ -1,0 +1,6 @@
+setuptools
+wheel
+streamlit==1.36.0
+pandas
+numpy
+matplotlib
