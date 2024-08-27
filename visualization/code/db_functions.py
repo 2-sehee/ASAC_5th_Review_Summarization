@@ -6,7 +6,7 @@ import pandas as pd
 import os
 
 ## DB 연결
-path = 'C:\\Users\\NT551XCJ\\Documents\\ASAC_MAP\\visualization\\code\\DB\\ASAC_MAP_HALF.db'
+path = os.path.join(os.path.dirname(__file__), 'DB/ASAC_MAP_HALF.db')
 #os.path.abspath('DB/ASAC_MAP_HALF.db')
 
 def get_connection(db_path = path):
