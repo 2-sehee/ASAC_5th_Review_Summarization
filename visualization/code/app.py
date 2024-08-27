@@ -363,7 +363,7 @@ def display_reviews(business_info):
         st.session_state.selected_categories = categories
         st.session_state.selected_stars = star_ratings
         st.session_state.local_reviews = local_on
-        #st.experimental_rerun()
+        st.experimental_rerun()
 
     print("categories : ", categories)  # 선택된 카테고리 출력
     
