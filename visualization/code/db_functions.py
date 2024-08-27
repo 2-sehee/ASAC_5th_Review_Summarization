@@ -5,7 +5,10 @@ from collections import namedtuple
 import pandas as pd
 
 ## DB 연결
-def get_connection(db_path='DB/ASAC_MAP_HALF.db'):
+import os
+db_path = os.path.join(os.path.dirname(__file__), 'DB/ASAC_MAP_HALF.db')
+
+def get_connection(db_path):
     return sqlite3.connect(db_path)
 
 
