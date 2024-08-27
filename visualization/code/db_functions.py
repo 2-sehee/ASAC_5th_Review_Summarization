@@ -36,7 +36,7 @@ Business = namedtuple(
     'service_keyword'
 ])
 ## 모든 business table 불러오기
-def fetch_business_list(db_path='DB/ASAC_MAP_HALF.db'):
+def fetch_business_list(db_path):
     conn = get_connection(db_path)
     query = """
     SELECT * FROM business
