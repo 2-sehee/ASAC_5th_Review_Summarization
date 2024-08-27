@@ -20,12 +20,17 @@ def setup_page():
     """, unsafe_allow_html=True)
 
 # 세션 상태 초기화
+if 'search_clicked' not in st.session_state:
+    st.session_state.search_clicked = False
+if 'business_name' not in st.session_state:
+    st.session_state.business_name = ""
 if 'selected_categories' not in st.session_state:
     st.session_state.selected_categories = []
 if 'selected_stars' not in st.session_state:
     st.session_state.selected_stars = []
 if 'local_reviews' not in st.session_state:
     st.session_state.local_reviews = False
+
 ## main 화면 표시 함수
 def show_main():
     # 페이지 타이틀 설정
@@ -34,7 +39,7 @@ def show_main():
     st.write("YELP 데이터셋을 활용한 고객 탐색경험 향상을 위한 키워드 요약 프로젝트입니다.")
     st.write("아래에서 원하는 가게 이름을 좌측에 입력해주세요.")
     business = fetch_business_list()
-    business_df = business[['name', 'category', 'region', 'review_count_biz', 'average_stars_biz']]
+    business_df = business[['name', 'category', 'region', 'average_stars_biz']]
     st.dataframe(business_df)
     st.caption("© 2024 ASAC-5th-떡잎마을 방범대. All rights reserved. Unauthorized use prohibited.")
 
