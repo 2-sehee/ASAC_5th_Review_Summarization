@@ -22,10 +22,10 @@ def setup_page():
 # 세션 상태 초기화
 if 'selected_categories' not in st.session_state:
     st.session_state.selected_categories = []
-
-if 'search_clicked' not in st.session_state:
-    st.session_state.search_clicked = False
-
+if 'selected_stars' not in st.session_state:
+    st.session_state.selected_stars = []
+if 'local_reviews' not in st.session_state:
+    st.session_state.local_reviews = False
 ## main 화면 표시 함수
 def show_main():
     # 페이지 타이틀 설정
