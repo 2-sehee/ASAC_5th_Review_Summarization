@@ -39,7 +39,7 @@ def show_main():
     st.write("YELP 데이터셋을 활용한 고객 탐색경험 향상을 위한 키워드 요약 프로젝트입니다.")
     st.write("아래에서 원하는 가게 이름을 좌측에 입력해주세요.")
     business = fetch_business_list()
-    business_df = business[['name', 'category', 'region', 'average_stars_biz']]
+    business_df = business[['name', 'category', 'region', 'review_count_biz', 'average_stars_biz']]
     st.dataframe(business_df)
     st.caption("© 2024 ASAC-5th-떡잎마을 방범대. All rights reserved. Unauthorized use prohibited.")
 
