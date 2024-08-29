@@ -451,6 +451,11 @@ with st.sidebar :
         st.session_state.search_clicked = True
         st.session_state.business_name = input_name
 
+    # 메인버튼
+    if st.button("Back to Main", key="go_back_button"):
+        st.session_state.search_clicked = False
+        st.session_state.business_name = None
+        st.experimental_rerun()  
     # 팀 소개
     st.markdown("---")  # 구분선 추가
     st.markdown("""
@@ -477,6 +482,7 @@ with st.sidebar :
         
 ####### main page #########
 # 메인 페이지 로직
+
 if not st.session_state.search_clicked or not st.session_state.business_name:
     show_main()
 ## submit 버튼 onclick 이벤트
@@ -489,3 +495,5 @@ else:
         st.error("No such store found. Please check the store name.")
     else:
         show_result(st.session_state.business_name)
+
+
