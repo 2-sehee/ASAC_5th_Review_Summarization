@@ -453,9 +453,11 @@ with st.sidebar :
 
     # 메인버튼
     if st.button("Back to Main", key="go_back_button"):
-        st.session_state.search_clicked = False
-        st.session_state.business_name = None
-        st.experimental_rerun()  
+        # 세션 상태 초기화
+        for key in st.session_state.keys():
+            del st.session_state[key]
+        st.rerun()  
+
     # 팀 소개
     st.markdown("---")  # 구분선 추가
     st.markdown("""
