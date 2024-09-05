@@ -84,14 +84,12 @@
        - 분석 보고서 작성 Lead<br/>
        - 프로젝트 기획 <br/>
        - EDA <br/>
-      
       </td>
       <td align="center" width="250px;"><a href="https://github.com/2-sehee">
           <img src="https://github.com/user-attachments/assets/2e14948f-e2c8-4efc-872d-25279bee052f" height="100px;" alt=""/><br /><sub><b>이세희</b></sub></a><br />
        - 프로젝트 서비스 구현 Lead<br/>
        - 프로젝트 기획 및 Edge case 관리<br/>
        - EDA 및 가설설정<br/>
-      
       </td>
       <td align="center" width="250px;"><a href="https://github.com/Euunz2">
           <img src="https://github.com/user-attachments/assets/c2db8a05-5b68-4849-a49b-100be43ae770" height="100px;" alt=""/><br /><sub><b>장은지</b></sub></a><br />
