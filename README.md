@@ -31,11 +31,11 @@
 👉 **Streamlit Demo 바로가기 :**  https://asac-map.streamlit.app/
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/0ed6f500-2db2-479c-9c63-81e75fd62a1d" width="100%"/>
+  <img alt="결과1" src="https://github.com/user-attachments/assets/12cb4bfd-5cf8-4788-b67f-6efae86d0ada" width="100%" />
 </p>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/0c7e2530-07d0-4649-a425-98ad3e735bab" width="100%"/>
+  <img alt="결과2" src="https://github.com/user-attachments/assets/dc2e08e8-cba7-4170-b080-47645b5a2531" width="100%" />
 </p>
 
 ---
@@ -43,12 +43,50 @@
 ## 🧠 4. 비즈니스 인사이트
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/dba8b524-f771-4888-b629-002906af3fde" width="100%"/>
+  <img src="https://github.com/user-attachments/assets/dba8b524-f771-4888-b629-002906af3fde" width="80%"/>
 </p>
 
 ---
 
-## 🛠️ 5. 사용 모델
+## 🗃️ 5. 데이터 전처리 및 최종 스키마
+
+본 프로젝트는 **Yelp Open Dataset**을 기반으로 진행되었으며, 핵심 정보만 남기기 위해 아래와 같은 전처리 과정을 수행했습니다.
+
+### 🔧 전처리 주요 단계
+
+- **카테고리 세분화 및 필터링**  
+  - business 테이블의 JSON category에서 *food / restaurant* 관련 업장만 필터링
+
+- **리뷰 데이터 정제**  
+  - 최근 **5개년 리뷰만 사용**  
+  - 가게별 리뷰 수 **10개 이상** 유지하여 데이터 품질 확보
+
+- **사용자 지역 정보 생성**  
+  - user 테이블에서 사용자별 **최빈 방문 지역** 추출  
+  - (방문 횟수 3회 미만일 경우 신뢰도 기준으로 공란 처리)
+
+- **핵심 지표 재계산**  
+  - 필터링된 데이터에 맞춰 **review count / stars 등 주요 지표 재산정**
+
+- **테이블 정합성 검증 및 인코딩**  
+  - business–review–user 테이블 간 key 매칭 정합성 확인  
+  - 복잡한 id 값은 **라벨 인코딩(label encoding)** 적용하여 간소화
+
+- **샘플링 및 이상치 제거**  
+  - 데이터 불균형(skew) 완화를 위해  
+    - 고밀도 구간과 기타 구간을 분리하여 **층화 샘플링** 진행  
+  - 이상치 제거 후 분포 검증  
+  - 샘플링 이후에도 평점·리뷰 분포가 **기존 패턴 유지**됨 확인
+
+### 📦 최종 스키마
+<p align="center">
+  <!-- 여기에 스키마 이미지 -->
+  <img alt="데이터셋 스키마" src="https://github.com/user-attachments/assets/168c3e5e-48fb-4869-9766-b51b1193336e" width="100%"/>
+</p>
+
+---
+
+## 🛠️ 6. 사용 모델
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/13f12d77-4132-4682-8bd2-8d276f856289" width="80%"/>
@@ -56,17 +94,23 @@
 
 ---
 
-## 📈 6. 모델 평가
+## 📈 7. 모델 평가
 
 ### ✔ 정량적 평가
 
 #### 🔹 키워드 추출 (KeyBERT)
+- 다양한 키워드 모델을 비교한 결과, **KeyBERT가 가장 높은 일관성과 정확도를 보여 최종 모델로 선정**
+- Bi-gram이 문장 의미를 더 잘 포착하여 전체적인 요약 품질 향상
 <p align="center">
   <img src="https://github.com/user-attachments/assets/4464dbc6-6b35-40b4-ac3a-6458c592afc3" width="45%"/>
   <img src="https://github.com/user-attachments/assets/b57c9b7a-052b-4497-97f2-71459bb5ef36" width="50%"/>
 </p>
 
 #### 🔹 토픽 분류 (OpenAI API)
+- pyLDAvis 기반 coherence score로 토픽 응집도를 계산  
+→ **6개의 토픽이 가장 높은 coherence를 보임**
+- TF-IDF 코사인 유사도 분석 결과  
+→ **토픽 간 유사도가 낮아(0.1~0.3)** 토픽이 잘 분리됨을 확인
 <p align="center">
   <img src="https://github.com/user-attachments/assets/8a81ff87-12fc-4f5d-8b41-12c16f05f660" width="80%"/>
 </p>
@@ -78,13 +122,16 @@
 ---
 
 ### ✔ 정성적 평가 (팀원 평가)
+- 약 200개 샘플을 기준으로 5점 척도 평가 진행  
+- KeyBERT + Bi-gram 조합이 **가독성과 핵심 요약 측면에서 가장 높은 점수**를 획득  
+- 토픽 분류 결과 역시 **사람이 판단해도 자연스럽게 묶이는 구성** 확인됨
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/0d633720-5497-4dc3-b43d-b3dd2cfcd912" width="60%"/>
+  <img src="https://github.com/user-attachments/assets/0d633720-5497-4dc3-b43d-b3dd2cfcd912" width="80%"/>
 </p>
 
 ---
 
-## 🗂️ 7. Edge Case 관리
+## 🗂️ 8. Edge Case 관리
 
 프로젝트의 예외 상황을 체계적으로 관리하기 위해  
 **Edge Case / Backlog를 Notion 기반으로 정리 및 기능 범위 조정**
@@ -97,7 +144,7 @@
 
 ---
 
-## 👥 8. 팀 구성 및 역할
+## 👥 9. 팀 구성 및 역할
 
 <table>
   <tbody>
@@ -132,7 +179,7 @@
 
 ---
 
-## 🛠️ 9. Tech Stack
+## 🛠️ 10. Tech Stack
 
 <div>
  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" />
